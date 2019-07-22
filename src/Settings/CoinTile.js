@@ -14,17 +14,21 @@ function clickCoinHandler(topSection,coinKey, addCoin, removeCoin) {
 
 export default function ({coinKey, topSection}) {
     return <AppContext.Consumer>
-        {({coinList,addCoin,removeCoin }) => {
+        {({coinList,addCoin,removeCoin,isInFavorites }) => {
             let coin = coinList[coinKey];
             let TileClass = SelectableTile;
             if(topSection){
                 TileClass = DeletableTile;
+            } else if(isInFavorites(coinKey)){
+                TileClass = DisabledTile
             }
 
             return <TileClass
             onClick={clickCoinHandler(topSection,coinKey, addCoin, removeCoin)}
             >
-                <CoinHeaderGrid topSection={topSection} name={coin.CoinName} symbol={coin.Symbol}/>
+                <CoinHeaderGrid topSection={topSection}
+                name={coin.CoinName}
+                symbol={coin.Symbol}/>
                 <CoinImage coin={coin}/>
             </TileClass>
         }}
