@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import WelcomeMessage from './WelcomeMessage';
+import AppLayout from './AppLayout';
 
 function App() {
   return (
-      <div> Hello World</div>
-  );
+      <AppLayout>
+      <WelcomeMessage/>
+      </AppLayout>
+      );
 }
 
 export default App;
