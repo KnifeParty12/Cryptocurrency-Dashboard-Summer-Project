@@ -52,8 +52,11 @@ removeCoin = key => {
     fetchPrices = async () => {
         if(this.state.first) return;
         let prices = await this.prices();
+        prices = prices.filter(price => Object.keys(price).length);
         this.setState({prices});
-    }
+    };
+
+
     prices = async () => {
         let returnData = [];
         for(let i = 0; i < this.state.favorites.length; i++){
