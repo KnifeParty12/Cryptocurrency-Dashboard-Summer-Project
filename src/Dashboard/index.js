@@ -3,7 +3,7 @@ import Page from '../Shared/Page';
 import styled from 'styled-components';
 import PriceGrid from './PriceGrid';
 import CoinSpotlight from './CoinSpotlight';
-
+import PriceChart from './PriceChart'
 
 const ChartGrid = styled.div`
 display: grid;
@@ -18,7 +18,7 @@ export default function () {
         <PriceGrid/>
         <ChartGrid>
         <CoinSpotlight/>
-            <div> Chart  Goes Here</div>
+            <PriceChart/>
         </ChartGrid>
     </Page>
 }
