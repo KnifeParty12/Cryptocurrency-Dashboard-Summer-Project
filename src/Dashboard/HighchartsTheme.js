@@ -1,3 +1,5 @@
+import {lightTheme} from "../Shared/Styles";
+
 export default  {
         colors: [
             '#61d936',
@@ -10,11 +12,11 @@ export default  {
             '#1B2839'
         ],
         chart: {
-            backgroundColor: '#061a44',
+            backgroundColor: lightTheme ? 'white' : '#061a44',
             borderColor: '#000000',
             borderWidth: 0,
             className: 'dark-container',
-            plotBackgroundColor: '#061a44',
+            plotBackgroundColor: lightTheme ? 'white': '#061a44',
             plotBorderWidth: 0
         },
         title: {
