@@ -6,7 +6,7 @@ import moment from 'moment';
 const cc = require('cryptocompare');
 export const AppContext = React.createContext();
 
-const MAX_FAVORITES = 10;
+const MAX_FAVORITES = 7;
 const TIME_UNITS = 10;
 
 export class AppProvider extends React.Component{
@@ -97,7 +97,7 @@ removeCoin = key => {
                 let priceData = await cc.priceFull(this.state.favorites[i], 'USD');
                 returnData.push(priceData);
             } catch (e) {
-                console.warn('Fetch price error: ', e);
+                console.warn('Fetch price error: ',e);
             }
         }
         return returnData;

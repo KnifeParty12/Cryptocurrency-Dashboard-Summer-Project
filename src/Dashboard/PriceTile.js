@@ -32,10 +32,10 @@ const numberFormat = number => {
 const PriceTileStyled = styled(SelectableTile)`
 ${props => props.compact && css`
 display: grid;
-${fontSize3}
-grid-gap : 5px;
+grid-gap: 5px;
 grid-template-columns: repeat(3, 1fr);
 justify-items: right;
+${fontSize3}
 `}
 ${props => props.currentFavorite && css`
 ${greenBoxShadow}
