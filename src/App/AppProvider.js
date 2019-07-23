@@ -41,6 +41,7 @@ removeCoin = key => {
 
     componentDidMount = () => {
     this.fetchCoins();
+    this.fetchPrices();
     };
 
     fetchCoins = async () => {
@@ -48,10 +49,30 @@ removeCoin = key => {
         this.setState({coinList});
     };
 
+    fetchPrices = async () => {
+        if(this.state.first) return;
+        let prices = await this.prices();
+        this.setState({prices});
+    }
+    prices = async () => {
+        let returnData = [];
+        for(let i = 0; i < this.state.favorites.length; i++){
+            try{
+                let priceData = await cc.priceFull(this.state.favorites[i], 'USD');
+                returnData.push(priceData);
+            } catch (e) {
+                console.warn('Fetch price error: ', e);
+            }
+        }
+        return returnData;
+    };
+
     confirmFavorites = () => {
         this.setState({
             firstVisit: false,
             page: 'dashboard'
+        }, () => {
+            this.fetchPrices();
         });
         localStorage.setItem('cryptodash', JSON.stringify({
             favorites: this.state.favorites
